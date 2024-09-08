@@ -1,13 +1,119 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
+#root {
+  height: 100%;
+}
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.inputs {
+  padding: 5px 8px;
+  border-radius: 6px;
+  border: unset;
+  text-align: center;
+}
+.inputs:focus {
+  outline: 1px solid #6aaf29;
+}
+
+.loading {
+  position: absolute;
+  top: 100%;
+  left: 100%;
+  font-size: 20px;
+  font-weight: bold;
+  background: #ffffff;
+  z-index: 99;
+}
+
+.global-layout {
+  width: 100%;
+  min-height: 100vh;
+  margin: 40px auto;
+  max-width: 1440px;
+  position: relative;
+}
+
+nav {
+  border-bottom: 1px solid black;
+}
+
+.crumbs menu {
+  display: flex;
+  list-style: none;
+  padding: 0;
+}
+
+.crumb {
+  flex-grow: 1;
+  display: inline-block;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.active {
+  font-weight: bold;
+}
+
+.crumb:hover {
+  text-decoration: underline;
+  color: aqua;
+}
+
+.crumb a {
+  text-decoration: none;
+  color: black;
+}
+.crumb a:hover {
+  text-decoration: underline;
+  color: aqua;
+}
+
+.table-container {
+  width: 100%;
+  position: relative;
+}
+.table-list {
+  margin: 40px auto;
+  overflow-y: auto;
+  border-collapse: collapse;
+  border: 1px solid #ddd;
+  background: #d8c2c2;
+  color: rgb(20, 28, 12);
+  cursor: all-scroll;
+}
+
+/* .table-list::-webkit-scrollbar {
+  display: none;
+} */
+
+.table-item {
+  font-size: 16px;
+  /* padding: 10px; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #cf7d7d;
+}
+
+.table-item > .item-span {
+  text-align: center;
+  padding: 10px 20px;
+  width: 100%;
+}
+
+.edit-btn {
+  border-radius: 25px;
+  border: unset;
+  cursor: pointer;
+  padding: 10px 20px;
+  text-align: center;
 }

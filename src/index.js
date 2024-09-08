@@ -1,17 +1,48 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./mock";
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
+import axios from "axios";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import Demo from "./pages/Demo";
+import Test from "./pages/Test";
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+const rootElement = document.getElementById("root");
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />,
+  },
+  {
+    path: "/demo",
+    element: <Demo />,
+    loader: async () => {
+      const data = await axios.get("/api/tablelist");
+      return data?.data?.data || [];
+    },
+  },
+  {
+    path: "/test",
+    element: <Test />,
+  },
+]);
+
+if (rootElement) {
+  ReactDOM.createRoot(rootElement).render(
+    <React.StrictMode>
+      <RouterProvider
+        router={router}
+        fallbackElement={<div className="loading">loading...</div>}
+      />
+    </React.StrictMode>
+  );
+}
+
 reportWebVitals();
